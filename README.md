@@ -11,9 +11,9 @@ and
 **AutoBackupIncremental** by xyzvisual https://modx.com/extras/package/autobackupincremental 
 
 AutoEvoBackup generates db only or db+files backup of a modx evotion website, on any modx system event.
-For example, you can make backup before or after document save, before logout from nanager, or after the login...
+For example, you can make backup before or after document save, before logout from manager, or after the login...
 
-This plugin works standalone, but suggested to use with EvoBackup Module (as backup manager)
+This plugin works standalone, but suggested to use with **EvoBackup Module** (as backup manager)
 https://github.com/Nicola1971/EvoBackup
 
 Notes:
