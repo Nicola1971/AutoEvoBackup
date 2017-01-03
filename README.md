@@ -14,7 +14,9 @@ AutoEvoBackup generates db only or db+files backup of a modx evotion website, on
 For example, you can make backup before or after document save, before logout from nanager, or after the login...
 
 This plugin works standalone, but suggested to use with EvoBackup Module (as backup manager)
-Evo files and compress into .zip for easy download
+https://github.com/Nicola1971/EvoBackup
+
+Notes:
 
 * Choosing dbonly, backups are saved into default Evo db backup directory (assets/backup)
 * Choosing db+files (light,medium,full) backups are saved into EvoBackup folder (root/_evobackup_archives)
