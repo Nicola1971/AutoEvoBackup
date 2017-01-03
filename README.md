@@ -33,6 +33,20 @@ You can set wich manager user Run the Backup when fires the System Event.
 * ThisRoleOnly // run backup only for "this" role id
 * ThisUserOnly // run backup only for "this" username
 
+# Plugin System Events:
+
+You run the plugin at any modx evo system events and run the backup for one or more events.
+Some suggested events:
+
+* OnManagerLogin // backup just after a user login
+* OnBeforeManagerLogout // backup when user logout from manager
+* OnBeforeDocFormSave // backup before user save a doc (saving previous data)
+* OnDocFormSave // backup when user save a doc (saving new data)
+
+### similiar events:
+
+OnBeforeChunkFormSave, 	OnChunkFormSave, OnBeforeModFormSave, OnModFormSave, OnModFormDelete, OnBeforeSnipFormSave, OnSnipFormSave, OnBeforeTempFormSave, OnTempFormSave, OnBeforeUserFormSave, OnUserFormSave, nUserFormDelete, OnBeforeWUsrFormDelete, OnWUsrFormDelete...
+
 Install:
 - Install with package Manager
 - create a folder in root: /_evobackup_archives
