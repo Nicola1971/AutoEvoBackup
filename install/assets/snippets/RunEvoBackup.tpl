@@ -10,8 +10,8 @@
  * @license 	http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  */
 
-$maxfilesize       = "80M";
-$number_of_backups = 6;
+$maxfilesize       = isset($maxfilesize) ? $maxfilesize : "80M"; //max zip filesize
+$number_of_backups = isset($number_of_backups) ? $number_of_backups : '6'; //number of backups to archive, then overwrite
 $mode              = isset($mode) ? $mode : 'dbonly'; //dbonly,light,medium,full
 $rootfiles         = isset($rootfiles) ? $rootfiles : '0'; //1=include root files
 $zipdb             = isset($zipdb) ? $zipdb : '0';
