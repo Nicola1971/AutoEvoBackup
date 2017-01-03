@@ -10,9 +10,6 @@
  * @license 	http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  */
 
-$WebGroup          = array(
-    'admin'
-);
 $maxfilesize       = "80M";
 $number_of_backups = 6;
 $mode              = isset($mode) ? $mode : 'dbonly'; //dbonly,light,medium,full
@@ -25,15 +22,14 @@ $customfold2 = isset($customfold2) ? $customfold2 : '';
 $customfold3 = isset($customfold3) ? $customfold3 : '';
 $customfold4 = isset($customfold4) ? $customfold4 : '';
 $customfold5 = isset($customfold5) ? $customfold6 : '';
-if ($modx->isMemberOfWebGroup($WebGroup) || $_SESSION['usertype'] == "manager") {
-    $modx_root_dir      = $modx->config['base_path'];
-    $mods_path          = $modx->config['base_path'] . "assets/modules/";
-    $modx_backup_dir    = $modx->config['base_path'] . '_evobackup_archives/';
-    $modx_db_backup_dir = $modx->config['base_path'] . 'assets/backup/';
-    $archive_prefix     = (isset($archive_prefix)) ? $archive_prefix : $modx->config['site_name'];
-    $archive_suffix     = date('Y-m-d-Hi');
-    $archive_file       = $modx_backup_dir . $archive_prefix . '_' . $archive_suffix . '_auto_bkp.zip';
-    $database_filename  = $archive_suffix . '_auto_db_bkp.sql';
+$modx_root_dir      = $modx->config['base_path'];
+$mods_path          = $modx->config['base_path'] . "assets/modules/";
+$modx_backup_dir    = $modx->config['base_path'] . '_evobackup_archives/';
+$modx_db_backup_dir = $modx->config['base_path'] . 'assets/backup/';
+$archive_prefix     = (isset($archive_prefix)) ? $archive_prefix : $modx->config['site_name'];
+$archive_suffix     = date('Y-m-d-Hi');
+$archive_file       = $modx_backup_dir . $archive_prefix . '_' . $archive_suffix . '_auto_bkp.zip';
+$database_filename  = $archive_suffix . '_auto_db_bkp.sql';
     
     if (file_exists($archive_file)) {
     } else {
@@ -413,7 +409,7 @@ EOD;
             chmod($modx_db_backup_dir . $database_filename, 0600);
             
             // modes
-            if ($mode != 'dbonly') {
+            if ($mode !== 'dbonly') {
                 /**
                  * Zip directories into archive
                  */
@@ -436,7 +432,8 @@ EOD;
                     $modx_files_array[] = $modx_root_dir . 'assets/images';
                     $modx_files_array[] = $modx_root_dir . 'assets/media';
                     $modx_files_array[] = $modx_root_dir . $MGR_DIR . '/includes/config.inc.php';
-                } else if ($mode = 'medium') {
+                } 
+				else if ($mode = 'medium') {
                     $modx_files_array   = array(
                         $modx_root_dir . 'assets/index.html'
                     );
@@ -453,7 +450,8 @@ EOD;
                     $modx_files_array[] = $modx_root_dir . 'assets/lib';
                     $modx_files_array[] = $modx_root_dir . 'assets/js';
                     $modx_files_array[] = $modx_root_dir . $MGR_DIR . '/includes/config.inc.php';
-                } else if ($mode = 'full') {
+                } 
+				else if ($mode = 'full') {
                     $modx_files_array   = array(
                         $modx_root_dir . 'assets'
                     );
@@ -511,7 +509,7 @@ EOD;
                     }
                 }
                 rename($tempfile, $archive_file);
-                chmod($archive_file, 0600);
+				chmod($archive_file, 0600);
                 if ($zipdb != '0') {
                     // rename
                     $fileBits = explode('.', $archive_file);
@@ -524,8 +522,9 @@ EOD;
                         unlink($modx_db_backup_dir . $database_filename);
                     }
                 }
-            }
-            $dir2   = $modx_backup_dir;
+			}//end mode !=dbonly  
+            
+			$dir2   = $modx_backup_dir;
             $files2 = array();
             $open2  = opendir($dir2);
             while ($file2 = readdir($open2)) {
@@ -534,6 +533,7 @@ EOD;
             }
             closedir($open2);
             rsort($files2);
+			
             // sql database filename
             
             if (array_key_exists($number_of_backups, $files2)) {
@@ -545,5 +545,3 @@ EOD;
             $o->dumpError();
         }
     }
-} else {
-}
