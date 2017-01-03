@@ -27,7 +27,7 @@ $customfold4 = isset($customfold4) ? $customfold4 : '';
 $customfold5 = isset($customfold5) ? $customfold6 : '';
 //events
 $e = &$modx->Event;
-// Ditto parameters
+// RunEvoBackup parameters
 $params['mode'] = $mode;
 $params['rootfiles'] = $rootfiles;
 $params['zipdb'] = $zipdb;
