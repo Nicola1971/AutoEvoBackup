@@ -522,6 +522,15 @@ EOD;
                         unlink($modx_db_backup_dir . $database_filename);
                     }
                 }
+				else {
+				// rename
+                    $fileBits = explode('.', $archive_file);
+                    $ext      = array_pop($fileBits);
+                    $fname    = implode('.', $fileBits);
+                    $filename = str_replace(' ', '_', $fname);
+                    rename($archive_file, $filename . '.' . $ext);
+					
+				}
 			}//end mode !=dbonly  
             
 			$dir2   = $modx_backup_dir;
