@@ -13,8 +13,12 @@ and
 AutoEvoBackup generates db only or db+files backup of a modx evotion website, on any modx system event.
 For example, you can make backup before or after document save, before logout from manager, or after the login...
 
-This plugin works standalone, but suggested to use with **EvoBackup Module** (as backup manager)
+This plugin works standalone, but is suggested to use with **EvoBackup Module**, as backup manager to view download or delete backup .zip archives.
 https://github.com/Nicola1971/EvoBackup
+
+Install:
+- Install with package Manager
+- create a folder in root: /_evobackup_archives
 
 Notes:
 
