@@ -31,6 +31,7 @@ $e = &$modx->Event;
 $params['mode'] = $mode;
 $params['rootfiles'] = $rootfiles;
 $params['zipdb'] = $zipdb;
+$params['deletesql'] = $deletesql;
 // run backup
 $backup = $modx->runSnippet('RunEvoBackup', $params);
 $output = $backup;
