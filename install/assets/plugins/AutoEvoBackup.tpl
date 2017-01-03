@@ -9,10 +9,10 @@
  * @version    1.2 Beta
  * @license	 http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal    @events OnBeforeManagerLogout,OnManagerLogin,OnBeforeDocFormSave
- * @internal    @disabled  0
+ * @internal    @disabled  1
  * @internal    @installset base
  * @internal    @modx_category Admin
- * @internal @properties  &mode= mode:;list;dbonly,light,medium,full;light;;Choose a Backup type &rootfiles= rootfiles:;list;0,1;0;;add index, index-ajax, robots and htaccess to the backup  &zipdb= zip .sql:;list;0,1;1;include .sql db backup to the zip &deletesql= delete sql:;list;0,1;1;after zip, delete sql file from backup folder &customfiles= enable custom files:;list;0,1;0;;add custom files and folders to the backup &customfold1=Custom file or folder 1:;string;; &customfold2=Custom file or folder 2:;string;; &customfold3=Custom file or folder 3:;string;; &customfold4=Custom file or folder 4:;string;; &customfold5=Custom file or folder 5:;string;; 
+ * @internal @properties  &mode= mode:;list;dbonly,light,medium,full;dbonly;;Choose a Backup type &rootfiles= rootfiles:;list;0,1;0;;add index, index-ajax, robots and htaccess to the backup  &zipdb= zip .sql:;list;0,1;0;include .sql db backup to the zip &deletesql= delete sql:;list;0,1;0;after zip, delete sql file from backup folder &customfiles= enable custom files:;list;0,1;0;;add custom files and folders to the backup &customfold1=Custom file or folder 1:;string;; &customfold2=Custom file or folder 2:;string;; &customfold3=Custom file or folder 3:;string;; &customfold4=Custom file or folder 4:;string;; &customfold5=Custom file or folder 5:;string;; 
  */
 
 $mode = isset($mode) ? $mode : 'light';//dbonly,light,medium,full
