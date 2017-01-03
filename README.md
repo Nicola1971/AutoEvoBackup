@@ -19,5 +19,5 @@ https://github.com/Nicola1971/EvoBackup
 Notes:
 
 * Choosing dbonly, backups are saved into default Evo db backup directory (assets/backup)
-* Choosing db+files (light,medium,full) backups are saved into EvoBackup folder (root/_evobackup_archives)
+* Choosing db+files (light,medium,full) files backups are saved into EvoBackup folder (root/_evobackup_archives) and you can choose to include (copy or move) the .sql file to zip.
 
