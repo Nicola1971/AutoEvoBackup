@@ -35,7 +35,7 @@ You can set wich manager user Run the Backup when fires the System Event.
 
 # Plugin System Events:
 
-You run the plugin at any modx evo system events and run the backup for one or more events.
+You can run the plugin at any modx evo system events and run the backup for one or more events.
 Some suggested events:
 
 * OnManagerLogin // backup just after a user login
