@@ -8,7 +8,7 @@
  * @category    plugin
  * @version    1.2 Beta 3
  * @license	 http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
- * @internal    @events OnBeforeManagerLogout,OnManagerLogin,OnBeforeDocFormSave
+ * @internal    @events OnBeforeManagerLogout,OnManagerLogin
  * @internal    @disabled  1
  * @internal    @installset base
  * @internal    @modx_category Admin
