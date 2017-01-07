@@ -280,6 +280,7 @@ EOD;
                 $output .= "# Server version: " . mysqli_get_server_info($resource) . $lf;
                 $output .= "# PHP Version: " . phpversion() . $lf;
                 $output .= "# Database : `" . $this->getDBname() . "`" . $lf;
+                $output .= "# Description: AutoEvoBackup {$lf}";
                 $output .= "#";
                 
                 // Generate dumptext for the tables.
