@@ -6,7 +6,7 @@
  *
  * @author    Nicola Lambathakis
  * @category    plugin
- * @version    1.2 Beta 3
+ * @version    1.2 RC1
  * @license	 http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
  * @internal    @events OnBeforeManagerLogout,OnManagerLogin
  * @internal    @disabled  1
@@ -33,26 +33,26 @@ $user = $_SESSION['mgrShortname'];
 
 // run backup for All
 if($allow_backup == 'All') {
-$backup = $modx->runSnippet('RunEvoBackup', $params);
+$backup = $modx->runSnippet('RunEvoAutoBackup', $params);
 }
 else 
 // run backup only for Admin role 1
 if(($role==1) AND ($allow_backup == 'AdminOnly')) {
-$backup = $modx->runSnippet('RunEvoBackup', $params);
+$backup = $modx->runSnippet('RunEvoAutoBackup', $params);
 }
 else
 // run backup for all manager users excluded Admin role 1
 if(($role!==1) AND ($allow_backup == 'AdminExcluded')) {
-$backup = $modx->runSnippet('RunEvoBackup', $params);
+$backup = $modx->runSnippet('RunEvoAutoBackup', $params);
 }
 else
 // run backup only for "this" role id
 if(($role==$ThisRole) AND ($allow_backup == 'ThisRoleOnly')) {
-$backup = $modx->runSnippet('RunEvoBackup', $params);
+$backup = $modx->runSnippet('RunEvoAutoBackup', $params);
 }
 else
 if(($user==$ThisUser) AND ($allow_backup == 'ThisUserOnly')) {
-$backup = $modx->runSnippet('RunEvoBackup', $params);
+$backup = $modx->runSnippet('RunEvoAutoBackup', $params);
 }
 else {
 $backup = '';
@@ -60,3 +60,4 @@ $backup = '';
 $e->output($backup);
 return;
 ?>
+
