@@ -6,9 +6,9 @@
  *
  * @author    Nicola Lambathakis
  * @category    plugin
- * @version    1.2 RC1
+ * @version    1.2 RC3
  * @license	 http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
- * @internal    @events OnBeforeManagerLogout,OnManagerLogin
+ * @internal    @events OnBeforeManagerLogout
  * @internal    @disabled  1
  * @internal    @installset base
  * @internal    @modx_category Admin
