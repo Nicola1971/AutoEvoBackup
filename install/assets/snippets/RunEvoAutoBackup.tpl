@@ -4,7 +4,7 @@
  * Execute a backup of Evo 
  *
  * @author    Nicola Lambathakis
- * @version    1.2 RC1
+ * @version    1.2 RC3
  * @category	snippet
  * @internal	@modx_category admin
  * @license 	http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
@@ -33,55 +33,7 @@ $archive_file       = $modx_backup_dir . $archive_prefix . '_' . $archive_suffix
 $database_filename  = $archive_suffix . '_auto_db_bkp.sql';
     
     if (file_exists($archive_file)) {
-    } else {
-        /**
-         *  Description:
-         *  Backup modx files and compress into .zip for easy download
-         *  @author Robin Stemp <robinstemp@gmail.com>
-         *  @version 0.8 13-Feb-06  Added log tables, excluding log data.
-         *                          Added check for .htaccess file, backup directory.
-         *                          Added MODx Manager theme header (header.inc.php)
-         *                          More testing done.
-         *  @version 0.5 11-Feb-2006, not heavily tested though
-         *
-         *  Setup:
-         *     1. change $modx_backup_dir to directory for zip archives and make sure read/write permission is set for directory
-         *     2. change $modx_backup_dir in /assets/modules/modbak/download.php file, note download.php requires full path name
-         *         ie /home/username/public_html/_backup/
-         *
-         *  ----------------------------------------
-         *  Uses PCLZIP Library for zip compression
-         *  Courtesy of http://www.phpconcept.net
-         *  ----------------------------------------
-         */
-        
-        /**
-         *   Variables to set:
-         *       modx_backup_dir [string]
-         *                Path to create archives and sql file in, must be writable
-         *
-         *       archive_prefix  [string]
-         *                Prefix for archive filename
-         *
-         *       archive_suffix  [string]
-         *                Suffix for archive filename
-         *
-         *       database_filename [string]
-         *                Filename for SQL dump file
-         *
-         */
-        
-        // directory to contain zipped archives, default is servers document root, not secure
-        
-        
-        
-        /*
-         *  $modx_root_dir
-         *        MODx Base path
-         *  $mods_path
-         *        Modules Path
-         */
-        
+    } else {      
         $dir3 = $modx_root_dir;
         
         $files3 = array();
@@ -101,8 +53,7 @@ $database_filename  = $archive_suffix . '_auto_db_bkp.sql';
             
             $modx_files_array[] = $modx_root_dir . $files3[$x];
         }
-        // Archive file name prefix
-        
+        // Archive file name prefix        
         
         // Suffix to add to archive name  (ie modxbackup12-11-2005-1735)   .zip will be added to output file
         // include Log table data in database backup, these tables can be quite large, so default is to exclude them
@@ -534,22 +485,39 @@ EOD;
                     rename($archive_file, $filename . '.' . $ext);
 					
 				}
-			}//end mode !=dbonly  
-            
+			}//end mode !=dbonly
+			
+            //zip delete (at number_of_backups)
 			$dir2   = $modx_backup_dir;
             $files2 = array();
             $open2  = opendir($dir2);
             while ($file2 = readdir($open2)) {
-                if (preg_match("/_auto_bkp/", $file2))
+                if (preg_match("/_auto_db_bkp/", $file2))
                     $files2[] = $file2;
             }
             closedir($open2);
             rsort($files2);
 			
-            // sql database filename
+            // zip database filename
             
             if (array_key_exists($number_of_backups, $files2)) {
                 unlink($modx_backup_dir . $files2[$number_of_backups]);
+            }
+			//sql delete  (at number_of_backups)
+			$dir3   = $modx_db_backup_dir;
+            $files3 = array();
+            $open3  = opendir($dir3);
+            while ($file3 = readdir($open3)) {
+                if (preg_match("/_auto_db_bkp/", $file3))
+                    $files3[] = $file3;
+            }
+            closedir($open3);
+            rsort($files3);
+			
+            // sql database filename
+            
+            if (array_key_exists($number_of_backups, $files3)) {
+                unlink($modx_db_backup_dir . $files3[$number_of_backups]);
             }
             
         } else {
