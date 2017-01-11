@@ -141,7 +141,7 @@ EOD;
             var $_dbtables;
             var $_isDroptables;
             
-            function Mysqldumper($host, $dbuser, $dbpassword, $dbname)
+            function __construct($host, $dbuser, $dbpassword, $dbname)
             {
                 $this->setHost($host);
                 $this->setDBuser($dbuser);
