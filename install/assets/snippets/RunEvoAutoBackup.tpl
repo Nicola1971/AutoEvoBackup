@@ -372,7 +372,7 @@ EOD;
                 
                 
                 
-                include $modx->config['base_path'] . "assets/modules/evobackup/pclzip.lib.php";
+                include $modx->config['base_path'] . "assets/snippets/evobackup/pclzip.lib.php";
                 //added*/
                 global $modx;
                 $MGR_DIR = MGR_DIR;
