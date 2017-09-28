@@ -523,19 +523,20 @@ EOD;
             if (array_key_exists($number_of_backups, $files3)) {
                 unlink($modx_db_backup_dir . $files3[$number_of_backups]);
             }
-// Send email
-	
+// Send email	
 if ($sendEmail == 'yes') {
 $to = $SendTo;
+$sitename = $modx->config['site_name'];
 $txt = "<h1>".$subject."</h1><a href=\"".$modx->config['site_url']."assets/modules/evobackup/downloadsql.php?filename=".basename($database_filename)."\">Download Backup</a>";
 $msg = wordwrap($txt,255);
 $headers = "From: ".$modx->config['emailsender']."" . "\r\n" .
 "CC: ".$SendToCC."";
 $my_file = $archive_prefix . '_' . $archive_suffix . '_auto_bkp.zip';
 $my_path = $modx->config['site_url'].$modx_db_backup_dir;
-mail($to,$subject,$msg,$headers);
+$my_subject = $sitename . ' ' .$subject; 
+mail($to,$my_subject,$msg,$headers);
 }
-// end Send email  
+// end Send email   
         } else {
             $o->setError(1, "Unable to Backup Database");
             $o->dumpError();
