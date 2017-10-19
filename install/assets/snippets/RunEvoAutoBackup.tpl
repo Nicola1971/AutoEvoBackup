@@ -4,7 +4,7 @@
  * Execute a backup of Evo 
  *
  * @author    Nicola Lambathakis
- * @version    1.3
+ * @version    1.4
  * @category	snippet
  * @internal	@modx_category admin
  * @license 	http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
@@ -527,7 +527,11 @@ EOD;
 if ($sendEmail == 'yes') {
 $to = $SendTo;
 $sitename = $modx->config['site_name'];
-$txt = "<h1>".$subject."</h1><a href=\"".$modx->config['site_url']."assets/modules/evobackup/downloadsql.php?filename=".basename($database_filename)."\">Download Backup</a>";
+if ($mode == 'dbonly') {
+$txt = "<h1>".$subject."</h1><a href=\"".$modx->config['site_url']."assets/snippets/evobackup/downloadsql.php?filename=".basename($database_filename)."\">Download Database Backup</a>";
+ }
+else {$txt = "<h1>".$subject."</h1><a href=\"".$modx->config['site_url']."assets/snippets/evobackup/download.php?filename=".basename($database_filename)."\">Download Site Backup</a>";
+	 }
 $msg = wordwrap($txt,255);
 $headers = "From: ".$modx->config['emailsender']."" . "\r\n" .
 "CC: ".$SendToCC."";
